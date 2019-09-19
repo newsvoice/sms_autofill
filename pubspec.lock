@@ -23,10 +23,10 @@ packages:
   pin_input_text_field:
     dependency: "direct main"
     description:
-      name: pin_input_text_field
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "1.0.1"
+      path: "../pin_input_text_field"
+      relative: true
+    source: path
+    version: "2.0.0"
   sky_engine:
     dependency: transitive
     description: flutter

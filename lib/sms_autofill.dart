@@ -67,7 +67,7 @@ class PinFieldAutoFill extends StatefulWidget {
 }
 
 class _PinFieldAutoFillState extends State<PinFieldAutoFill> with CodeAutoFill {
-  PinEditingController controller;
+  TextEditingController controller;
 
   @override
   Widget build(BuildContext context) {
@@ -77,14 +77,15 @@ class _PinFieldAutoFillState extends State<PinFieldAutoFill> with CodeAutoFill {
       focusNode: widget.focusNode,
       keyboardType: widget.keyboardType,
       autoFocus: widget.autofocus,
-      pinEditingController: controller,
+      controller: controller,
       onSubmit: widget.onCodeSubmitted,
     );
   }
 
   @override
   void initState() {
-    controller = PinEditingController(text: '', pinLength: widget.codeLength);
+    print('initState');
+    controller = TextEditingController(text: '');
     code = widget.currentCode;
     codeUpdated();
     controller.addListener(() {
@@ -99,13 +100,14 @@ class _PinFieldAutoFillState extends State<PinFieldAutoFill> with CodeAutoFill {
 
   @override
   void didUpdateWidget(PinFieldAutoFill oldWidget) {
-    if (widget.codeLength != oldWidget.codeLength) {
-      controller = PinEditingController(text: controller.text, pinLength: widget.codeLength);
-    }
-    if (widget.currentCode != oldWidget.currentCode || widget.currentCode != code) {
-      code = widget.currentCode;
-      codeUpdated();
-    }
+//    print('didUpdateWidget');
+//    if (widget.codeLength != oldWidget.codeLength) {
+//      controller = TextEditingController(text: controller.text,);
+//    }
+//    if (widget.currentCode != oldWidget.currentCode || widget.currentCode != code) {
+//      code = widget.currentCode;
+//      codeUpdated();
+//    }
     super.didUpdateWidget(oldWidget);
   }
 
@@ -117,9 +119,9 @@ class _PinFieldAutoFillState extends State<PinFieldAutoFill> with CodeAutoFill {
   @override
   void dispose() {
     cancel();
-    if (!controller.autoDispose) {
-      controller.dispose();
-    }
+//    if (!controller.autoDispose) {
+//      controller.dispose();
+//    }
     super.dispose();
   }
 }
